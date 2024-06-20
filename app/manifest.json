@@ -1,0 +1,16 @@
+{
+    "name": "Taskverse Application",
+    "start_url": "/",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "assets/images/logo1.png",
+            "type": "image/png",
+            "sizes": "54x54"
+        }
+    ],
+    "short_name": "Taskverse",
+    "description": "A fullstack task and todos application",
+    "background_color": "orange",
+    "theme_color": "pink"
+}
