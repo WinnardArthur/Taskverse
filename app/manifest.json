@@ -10,7 +10,7 @@
         }
     ],
     "short_name": "Taskverse",
-    "description": "A fullstack task and todos application",
+    "description": "A fullstack PWA tasks and todos application",
     "background_color": "orange",
     "theme_color": "pink"
 }
