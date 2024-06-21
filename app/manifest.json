@@ -1,16 +1,21 @@
 {
-    "name": "Taskverse Application",
-    "start_url": "/",
-    "display": "standalone",
-    "icons": [
-        {
-            "src": "assets/images/logo1.png",
-            "type": "image/png",
-            "sizes": "54x54"
-        }
-    ],
-    "short_name": "Taskverse",
-    "description": "A fullstack PWA tasks and todos application",
-    "background_color": "orange",
-    "theme_color": "pink"
+  "name": "Taskverse",
+  "short_name": "Taskverse",
+  "start_url": "/",
+  "display": "standalone",
+  "description": "Collaborate effectively, manage projects, and attain new productivity peaks",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
 }
