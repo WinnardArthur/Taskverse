@@ -4,7 +4,7 @@
   "start_url": "/",
   "display": "standalone",
   "description": "Collaborate effectively, manage projects, and attain new productivity peaks",
-  "background_color": "#ffffff",
+  "background_color": "#000000",
   "theme_color": "#ffffff",
   "icons": [
     {
