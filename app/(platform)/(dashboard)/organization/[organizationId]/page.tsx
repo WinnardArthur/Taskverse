@@ -1,9 +1,23 @@
 import React from "react";
-import { auth } from "@clerk/nextjs/server";
-import { OrganizationSwitcher } from "@clerk/nextjs";
 
-const OrganizationIdPage = () => {
-  return <div>Organization Page</div>;
+
+import { db } from "@/lib/db";
+import { Board } from "./board";
+import { Form } from "./form";
+
+const OrganizationIdPage = async () => {
+  const boards = await db.board.findMany();
+
+  return (
+    <div>
+      <Form/>
+      <div className="space-y-2">
+        {boards.map((board) => (
+          <Board title={board.title} id={board.id} key={board.id} />
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default OrganizationIdPage;
