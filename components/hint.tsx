@@ -1,9 +1,12 @@
+"use client";
+
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { useEffect, useState } from "react";
 
 interface HintProps {
   children: React.ReactNode;
@@ -18,6 +21,14 @@ export const Hint = ({
   side = "bottom",
   sideOffset = 0,
 }: HintProps) => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) return null;
+
   return (
     <TooltipProvider>
       <Tooltip delayDuration={0}>
