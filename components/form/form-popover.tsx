@@ -1,6 +1,6 @@
 "use client";
 
-import { ElementRef, useRef } from "react";
+import { ElementRef, useEffect, useRef, useState } from "react";
 import { XIcon } from "lucide-react";
 import { toast } from "sonner";
 
@@ -17,7 +17,7 @@ import {
 import { FormInput } from "./form-input";
 import { FormSubmitButton } from "./form-submit-button";
 import { FormPicker } from "./form-picker";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 interface FormPopoverProps {
   children: React.ReactNode;
@@ -33,6 +33,8 @@ export const FormPopover = ({
   sideOffset = 0,
 }: FormPopoverProps) => {
   const router = useRouter();
+  const [isMounted, setIsMounted] = useState(false);
+
   const { execute, fieldErrors } = useAction(createBoard, {
     onSuccess: (data) => {
       toast.success("Board created");
@@ -52,6 +54,12 @@ export const FormPopover = ({
 
     execute({ title, image });
   };
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) return null;
 
   return (
     <Popover>
