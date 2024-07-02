@@ -1,6 +1,6 @@
 "use client";
 
-import { useFormState, useFormStatus } from "react-dom";
+import { useFormStatus } from "react-dom";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -23,7 +23,7 @@ export const FormSubmitButton = ({
   children,
   disabled,
   className,
-  variant,
+  variant = "primary",
 }: FormSubmitButtonProps) => {
   const { pending } = useFormStatus();
 
