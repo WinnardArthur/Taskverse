@@ -21,8 +21,8 @@ export const BoardTitleForm = ({ data }: BoardTitleFormProps) => {
       disableEditing();
     },
     onError: (error) => {
-        toast.error(error);
-    }
+      toast.error(error);
+    },
   });
 
   const formRef = useRef<ElementRef<"form">>(null);
@@ -43,6 +43,8 @@ export const BoardTitleForm = ({ data }: BoardTitleFormProps) => {
 
   const handleSubmit = (formData: FormData) => {
     const title = formData.get("title") as string;
+
+    if (title === data.title) return disableEditing();
 
     execute({ title, id: data.id });
   };
