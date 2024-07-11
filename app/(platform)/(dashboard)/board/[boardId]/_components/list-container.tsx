@@ -7,6 +7,9 @@ import { ListWithCards } from "@/types";
 
 import { ListForm } from "./list-form";
 import { ListItem } from "./list-item";
+import { useAction } from "@/hooks/use-action";
+import { updateListOrder } from "@/actions/update-list-order";
+import { toast } from "sonner";
 
 interface ListContainerProps {
   data: ListWithCards[];
@@ -24,6 +27,13 @@ function reOrder<T>(list: T[], startIndex: number, endIndex: number) {
 }
 
 const ListContainer = ({ data, boardId }: ListContainerProps) => {
+  const { execute: executeUpdateListOrder } = useAction(updateListOrder, {
+    onSuccess: () => toast.success("List reordered"),
+    onError: (error) => {
+      toast.error(error);
+    },
+  });
+
   const [orderedData, setOrderedData] = useState(data);
 
   useEffect(() => {
@@ -51,7 +61,7 @@ const ListContainer = ({ data, boardId }: ListContainerProps) => {
       );
 
       setOrderedData(items);
-      // Trigger server action
+      executeUpdateListOrder({ items, boardId });
     }
 
     // If user moves a card
