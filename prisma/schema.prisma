@@ -71,12 +71,12 @@ enum ENTITY_TYPE {
 
 model AuditLog {
   id          String      @id @default(auto()) @map("_id") @db.ObjectId
-  orgId       String      @db.ObjectId
+  orgId       String
   action      ACTION
   entityId    String      @db.ObjectId
   entityType  ENTITY_TYPE
   entityTitle String
-  userId      String      @db.ObjectId
+  userId      String
   userImage   String      @db.String
   username    String      @db.String
 
