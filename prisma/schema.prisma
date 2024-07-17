@@ -70,14 +70,15 @@ enum ENTITY_TYPE {
 }
 
 model AuditLog {
-  id         String      @id @default(auto()) @map("_id") @db.ObjectId
-  orgId      String      @db.ObjectId
-  action     ACTION
-  entityId   String      @db.ObjectId
-  entityType ENTITY_TYPE
-  userId     String      @db.ObjectId
-  userImage  String      @db.String
-  username   String      @db.String
+  id          String      @id @default(auto()) @map("_id") @db.ObjectId
+  orgId       String      @db.ObjectId
+  action      ACTION
+  entityId    String      @db.ObjectId
+  entityType  ENTITY_TYPE
+  entityTitle String
+  userId      String      @db.ObjectId
+  userImage   String      @db.String
+  username    String      @db.String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
