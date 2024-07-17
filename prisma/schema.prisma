@@ -73,7 +73,7 @@ model AuditLog {
   id          String      @id @default(auto()) @map("_id") @db.ObjectId
   orgId       String
   action      ACTION
-  entityId    String      @db.ObjectId
+  entityId    String
   entityType  ENTITY_TYPE
   entityTitle String
   userId      String
