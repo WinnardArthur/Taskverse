@@ -8,6 +8,7 @@ import { createSafeAction } from "@/lib/create-safe-action";
 
 import { UpdateCard } from "./schema";
 import { InputType, ReturnType } from "./types";
+import { createAuditLog } from "@/lib/create-audit-log";
 
 const handler = async (data: InputType): Promise<ReturnType> => {
   const { userId, orgId } = auth();
@@ -28,13 +29,20 @@ const handler = async (data: InputType): Promise<ReturnType> => {
         id,
         list: {
           board: {
-            orgId
-          }
-        }
+            orgId,
+          },
+        },
       },
       data: {
         ...values,
       },
+    });
+    // Create activity for card update
+    await createAuditLog({
+      entityTitle: card.title,
+      entityId: card.id,
+      entityType: "CARD",
+      action: "UPDATE",
     });
   } catch (error) {
     return {
