@@ -11,9 +11,11 @@ import { decrementAvailableCount } from "@/lib/org-limit";
 
 import { DeleteBoard } from "./schema";
 import { InputType, ReturnType } from "./types";
+import { checkSubscription } from "@/lib/subscription";
 
 const handler = async (data: InputType): Promise<ReturnType> => {
   const { userId, orgId } = auth();
+  const isPro = await checkSubscription();
 
   if (!userId || !orgId) {
     return {
@@ -33,7 +35,9 @@ const handler = async (data: InputType): Promise<ReturnType> => {
       },
     });
 
-    await decrementAvailableCount();
+    if (!isPro) {
+      await decrementAvailableCount();
+    }
 
     // Create activity for board deletion
     await createAuditLog({
