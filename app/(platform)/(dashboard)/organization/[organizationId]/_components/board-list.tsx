@@ -86,8 +86,8 @@ BoardList.Skeleton = function SkeletonBoardList() {
     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       {Array(10)
         .fill(undefined)
-        .map((_) => (
-          <Skeleton className="aspect-video h-full w-full p-2" />
+        .map((_, index) => (
+          <Skeleton key={index} className="aspect-video h-full w-full p-2" />
         ))}
     </div>
   );

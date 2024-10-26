@@ -41,7 +41,7 @@ const MarketingPage = () => {
       >
         Collaborate effectively, manage projects, and attain new productivity
         peaks. From corporate towers to home offices, Taskverse supports your
-        team's unique working style to achieve all your goals.
+        team&apos;s unique working style to achieve all your goals.
       </div>
 
       <Button className="mt-6" size="lg" asChild>
